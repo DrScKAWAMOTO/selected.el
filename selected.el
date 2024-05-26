@@ -66,8 +66,9 @@
           (assq-delete-all 'selected-region-active-mode minor-mode-overriding-map-alist))))
 
 (defun selected--on ()
-  "Enable `selected-region-active-mode'."
-  (selected-region-active-mode 1))
+  (when (eq this-command 'set-mark-command)
+    "Enable `selected-region-active-mode'."
+    (selected-region-active-mode 1)))
 
 (defun selected-off ()
   "Disable bindings in `selected-keymap' temporarily."
